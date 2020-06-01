@@ -16,6 +16,12 @@ export default {
     ]
   },
   /*
+  ** Call a middleware function on route changes
+  */
+  router: {
+    middleware: 'router-guards'
+  },
+  /*
   ** Customize the progress-bar color
   */
   loading: { color: '#fff' },
@@ -66,6 +72,13 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+      config.module.rules.push({
+        test: /\.(ogg|mp3|wav|mpe?g)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]'
+        }
+      })
     }
   }
 }

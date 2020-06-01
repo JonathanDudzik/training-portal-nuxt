@@ -22,7 +22,7 @@
           <img
             class="my-icon-medium"
             src="#"
-            alt="image of a document"
+            alt="PDF Icon"
           >
           <p class="has-text-white is-block">Download PDF</p>
         </a>
@@ -35,7 +35,7 @@
           <img
             class="my-icon-medium"
             src="#"
-            alt="image of a document"
+            alt="Speaker Icon"
           >
           <p class="has-text-white">Download MP3</p>
         </a>
@@ -49,7 +49,3 @@ export default {
 
 }
 </script>
-
-<style scoped>
-
-</style>

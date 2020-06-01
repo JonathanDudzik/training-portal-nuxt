@@ -1,32 +1,14 @@
 export const state = () => ({
-  all: [
+  allSections: [
     {
       listName: 'Welcome',
+      listRoute: '/',
       listId: 'content-one'
     },
     {
-      listName: 'How it Works',
+      listName: 'Regulations',
+      listRoute: '/regulations',
       listId: 'content-two'
-    },
-    {
-      listName: 'Five Key Questions',
-      listId: 'content-three'
-    },
-    {
-      listName: 'Quick Review',
-      listId: 'content-four'
-    },
-    {
-      listName: 'Submission in NC CARES',
-      listId: 'content-five'
-    },
-    {
-      listName: 'Addtional Points',
-      listId: 'content-six'
-    },
-    {
-      listName: 'Message from the State Agency',
-      listId: 'content-seven'
     }
   ]
 })

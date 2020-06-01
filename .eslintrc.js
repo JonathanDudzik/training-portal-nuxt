@@ -13,5 +13,14 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
+    "object-shorthand": "off",
+    "space-before-function-paren": "off",
+    "object-curly-spacing": "off",
+    "no-var": "warn",
+    "no-trailing-spaces": "warn",
+    "indent": "warn",
+    "eqeqeq": "warn",
+    "keyword-spacing": "warn",
+    "quotes": "warn"
   }
 }

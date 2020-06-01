@@ -2,6 +2,10 @@
 
 > Training Portal for improvements and demos
 
+## Dev Notes
+
+Navigation: The old navigation was based on if-statement and the changing of sectionReference in the store. The new navigation will be based on router links. Think about the component that will handle the navigation. Will it used in multiple places?
+
 ## Build Setup
 
 ```bash
