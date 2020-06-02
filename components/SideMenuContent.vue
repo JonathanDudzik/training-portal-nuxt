@@ -7,12 +7,12 @@
       <ul class="menu-list" role="menu">
         <li>
           <a
-            @click="navigate(element.itemRoute);"
             :id="element.itemId"
             ref="item"
             class="is-size-6"
             tabindex="0"
             role="menuitem"
+            @click="navigate(element.itemRoute);"
           >
             {{ key + 1 }}. {{ element.itemName }}
           </a>
@@ -29,6 +29,11 @@ export default {
       sections: this.$store.state.sections.allSections
     }
   },
+  computed: {
+    currentSectionObject () {
+      return this.$store.getters.currentSectionObject
+    }
+  },
   watch: {
     '$store.state.environment.currentRoute' () {
       this.changeView()
@@ -36,11 +41,6 @@ export default {
   },
   mounted () {
     this.changeView()
-  },
-  computed: {
-    currentSectionObject () {
-      return this.$store.getters.currentSectionObject
-    }
   },
   methods: {
     changeView () {

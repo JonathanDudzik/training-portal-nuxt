@@ -14,14 +14,16 @@
         <div class="column is-2 is-inline-block side-menu">
           <nav role="menu" class="menu" aria-label="section navigation">
             <SideMenuContent />
-            <!-- Side menu resources -->
-            <!-- Side menu certificate -->
-            <!-- audio slider -->
+            <SideMenuResources />
+            <SideMenuCertificate />
+            <AudioSlider />
           </nav>
         </div>
       </div>
     </div>
     <LateralNavigator />
+    <BottomFooter />
+    <PointModal />
   </div>
 </template>
 
@@ -29,11 +31,21 @@
 import InternetExplorer from '~/components/InternetExplorer.vue'
 import TopNavbar from '~/components/TopNavbar.vue'
 import SideMenuContent from '~/components/SideMenuContent.vue'
+import SideMenuResources from '~/components/SideMenuResources.vue'
+import SideMenuCertificate from '~/components/SideMenuCertificate.vue'
+import AudioSlider from '~/components/AudioSlider.vue'
 import LateralNavigator from '~/components/LateralNavigator.vue'
+import BottomFooter from '~/components/BottomFooter.vue'
+import PointModal from '~/components/PointModal.vue'
 
 export default {
   components: {
+    PointModal,
+    BottomFooter,
     LateralNavigator,
+    AudioSlider,
+    SideMenuCertificate,
+    SideMenuResources,
     SideMenuContent,
     TopNavbar,
     InternetExplorer

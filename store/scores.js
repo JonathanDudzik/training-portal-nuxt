@@ -1,7 +1,7 @@
 export const state = () => ({
   currentScore: 0,
   incorrectAnswers: 0,
-  possibleScore: 30
+  possibleScore: 10
 })
 
 export const mutations = {

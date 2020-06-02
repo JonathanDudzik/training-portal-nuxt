@@ -28,9 +28,6 @@
             <figure class="image my-padding-2-top">
               <img src="#" alt="State Seal">
             </figure>
-            <button class="button" @click="playAudio">
-              AUDIO
-            </button>
             <!-- begin behavioral component -->
             <ManageScore>
               <template v-slot:default="slotProps">
@@ -66,11 +63,6 @@ export default {
   components: {
     ManageScore,
     ManageMedia
-  },
-  methods: {
-    playAudio () {
-      this.$store.commit('environment/toggleAudioPlaying')
-    }
   }
 }
 </script>
