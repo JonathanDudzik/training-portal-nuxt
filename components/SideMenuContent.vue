@@ -3,19 +3,19 @@
     <p class="menu-label is-size-5 my-padding-2-top">
       Content
     </p>
-    <div v-for="(content, key) in contents" :key="key">
+    <div v-for="(element, key) in sections" :key="key">
       <ul class="menu-list" role="menu">
-        <li @click="sideMenuHandler(content.listId)">
-          <nuxt-link
-            :id="content.listId"
+        <li>
+          <a
+            @click="navigate(element.itemRoute);"
+            :id="element.itemId"
             ref="item"
-            :to="content.listRoute"
             class="is-size-6"
             tabindex="0"
             role="menuitem"
           >
-            {{ key }}. {{ content.listName }}
-          </nuxt-link>
+            {{ key + 1 }}. {{ element.itemName }}
+          </a>
         </li>
       </ul>
     </div>
@@ -26,32 +26,40 @@
 export default {
   data () {
     return {
-      contents: this.$store.state.sections.all
+      sections: this.$store.state.sections.allSections
     }
   },
   watch: {
-    '$store.state.environment.sectionReference' () {
-      this.sectionSelectorHandler()
+    '$store.state.environment.currentRoute' () {
+      this.changeView()
     }
   },
   mounted () {
-    return this.sectionSelectorHandler()
+    this.changeView()
+  },
+  computed: {
+    currentSectionObject () {
+      return this.$store.getters.currentSectionObject
+    }
   },
   methods: {
-    sideMenuHandler (section) {
-      this.$store.commit('environment/changeSectionReference', section)
-    },
-    sectionSelectorHandler () {
+    changeView () {
       // array of all menu item elements
       const elements = this.$refs.item
-      // the current selected section
-      const sectionRef = this.$store.state.environment.sectionReference
-      // object of nuxt-link that has the matching id of current route
-      const selectedElement = elements.find(el => el.$el.id === sectionRef)
-      // remove the "is-active" class from each element
-      elements.forEach(function (el) { el.$el.removeAttribute('class', 'is-active') })
-      // add the is-active class to the value that is selected
-      selectedElement.$el.setAttribute('class', 'is-active')
+      // object of current section
+      const current = this.currentSectionObject
+      // element in list that matches id in current section object
+      const currentElement = elements.find(el => el.id === current.itemId)
+      // remove the "is-active" class from each element in the list
+      elements.forEach(function (el) { el.removeAttribute('class', 'is-active') })
+      // add the is-active class to the current element
+      currentElement.setAttribute('class', 'is-active')
+    },
+    navigate (element) {
+      // element is undefined on navigation where sidemenu is not clicked
+      if (element) {
+        this.$router.push(element)
+      }
     }
   }
 }

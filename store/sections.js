@@ -1,14 +1,14 @@
 export const state = () => ({
   allSections: [
     {
-      listName: 'Welcome',
-      listRoute: '/',
-      listId: 'content-one'
+      itemName: 'Welcome',
+      itemRoute: '/',
+      itemId: 'content-one'
     },
     {
-      listName: 'Regulations',
-      listRoute: '/regulations',
-      listId: 'content-two'
+      itemName: 'Regulations',
+      itemRoute: '/regulations',
+      itemId: 'content-two'
     }
   ]
 })

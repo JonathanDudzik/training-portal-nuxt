@@ -19,7 +19,7 @@ export default {
   ** Call a middleware function on route changes
   */
   router: {
-    middleware: 'router-guards'
+    middleware: 'navigation-guards'
   },
   /*
   ** Customize the progress-bar color

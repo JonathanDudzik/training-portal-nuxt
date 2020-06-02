@@ -3,11 +3,18 @@
     <div class="level">
       <div class="level-item" />
       <button
-        v-if="nextModuleId"
+        v-if="nextSectionObject"
         class="button is-large level-item ie-support"
-        @click="navigateNext()"
+        @click="navigate('next')"
       >
-        Continue to next section &#62;
+        {{ nextSectionObject.itemName }}
+      </button>
+      <button
+        v-if="prevSectionObject"
+        class="button is-large level-item ie-support"
+        @click="navigate('prev')"
+      >
+        {{ prevSectionObject.itemName }}
       </button>
       <div class="level-item" />
     </div>
@@ -18,50 +25,23 @@
 export default {
   computed: {
     currentSectionIndex () {
-      const sectionsArray = this.$store.state.sections.allSections
-      const sectionRef = this.$store.state.environment.sectionReference
-      const newArray = []
-
-      for (let i = 0; i < sectionsArray.length; i++) {
-        newArray.push(sectionsArray[i].listId)
-      }
-
-      function isSelected(element) {
-        return element === sectionRef
-      }
-
-      return newArray.findIndex(isSelected)
-
-      // no ie11 support
-      // return newArray.findIndex(item => item == this.passedSectionRef)
+      return this.$store.getters.currentSectionIndex
     },
-
-    nextModuleId () {
-      const sectionsArray = this.$store.state.sections.allSections
-      const currentModuleIndex = this.currentSectionIndex
-      const nextModuleIndex = this.currentSectionIndex + 1
-      const currentModuleReference = sectionsArray[currentModuleIndex]
-      const nextModuleReference = sectionsArray[nextModuleIndex]
-
-      if (nextModuleReference) {
-        return nextModuleReference
-      } else {
-        // if no next section, return current section id
-        return currentModuleReference
-      }
+    nextSectionObject () {
+      return this.$store.getters.nextSectionOject
+    },
+    prevSectionObject () {
+      return this.$store.getters.prevSectionOject
     }
   },
   methods: {
-    navigateNext () {
-      console.log(this.$store.getters.currentSection)
-      // programmatically change the current sectionReference
-      // this.$store.commit('environment/changeSectionReference', this.nextModuleId.listId)
-
-      // programmatically navigate THERE ARE ISSUE HERE
-      // this.$router.push(this.nextModuleId.listRoute)
-
-      // scroll to top of new section
-      // gsap.to(window, 0.5, {scrollTo: 0})
+    navigate (direction) {
+      // programmatically navigate
+      if (direction === 'next') {
+        this.$router.push(this.nextSectionObject.itemRoute)
+      } else if (direction === 'prev') {
+        this.$router.push(this.prevSectionObject.itemRoute)
+      }
     }
   }
 }

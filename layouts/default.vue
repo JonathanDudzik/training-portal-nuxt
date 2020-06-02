@@ -13,7 +13,7 @@
         <nuxt /> <!-- individual pages -->
         <div class="column is-2 is-inline-block side-menu">
           <nav role="menu" class="menu" aria-label="section navigation">
-            <!-- <SideMenuContent /> -->
+            <SideMenuContent />
             <!-- Side menu resources -->
             <!-- Side menu certificate -->
             <!-- audio slider -->
@@ -28,13 +28,13 @@
 <script>
 import InternetExplorer from '~/components/InternetExplorer.vue'
 import TopNavbar from '~/components/TopNavbar.vue'
-// import SideMenuContent from '~/components/SideMenuContent.vue'
+import SideMenuContent from '~/components/SideMenuContent.vue'
 import LateralNavigator from '~/components/LateralNavigator.vue'
 
 export default {
   components: {
     LateralNavigator,
-    // SideMenuContent,
+    SideMenuContent,
     TopNavbar,
     InternetExplorer
   }
